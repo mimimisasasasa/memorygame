@@ -91,3 +91,8 @@ h1 {
     writing-mode: horizontal-tb;  /* ✅ 横書きにする */
 }
 
+/* 画像を拡大するためのクラス */
+.enlarged {
+    transform: scale(1.5); /* 1.5倍に拡大 */
+    transition: transform 0.3s ease; /* 拡大を滑らかにする */
+}
