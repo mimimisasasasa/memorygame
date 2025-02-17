@@ -39,17 +39,6 @@ function flipCard(event) {
     card.textContent = card.dataset.symbol;
     flippedCards.push(card);
 
-    // プレイヤー1のカード選択時に画像を大きくする
-    if (playerTurn === 1) {
-        player1Image.classList.add("enlarged");
-    }
-
-     // プレイヤー2のカード選択時に画像を大きくする
-    if (playerTurn === 2) {
-        player2Image.classList.add("enlarged");
-    }
-
-
 // 2枚めくったら判定
     if (flippedCards.length === 2) {
         setTimeout(checkMatch, 800);
@@ -87,16 +76,22 @@ function checkMatch() {
     }
       // スコア表示更新
     updateScoreDisplay();
-
-     // プレイヤーの画像が大きくなった場合、ターン終了後元に戻す
-    if (playerTurn === 2) {
-        player1Image.classList.remove("enlarged");
-    }
 }
 
 // ターン表示を更新する関数
 function updateTurnDisplay() {
     playerTurnDisplay.textContent = `プレイヤー ${playerTurn} の番です`;
+
+  // プレイヤー1のターンならプレイヤー1の画像を大きく
+    if (playerTurn === 1) {
+        player1Image.classList.add("enlarged");
+        player2Image.classList.remove("enlarged");
+    }  
+// プレイヤー2のターンならプレイヤー2の画像を大きく
+    else if (playerTurn === 2) {
+        player2Image.classList.add("enlarged");
+        player1Image.classList.remove("enlarged");
+    }
 }
 
 function updateScoreDisplay() {
