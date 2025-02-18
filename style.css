@@ -29,6 +29,16 @@ h1 {
     border-radius: 10px;
 }
 
+/* プレイヤー1が取ったカードの背面を緑に */
+.card.matched .player1 {
+    background-color: #4caf50; /* 緑色 */
+}
+
+/* プレイヤー2が取ったカードの背面を黄色に */
+.card.matched .player2  {
+    background-color: #ffeb3b; /* 黄色 */
+}
+
 .card.matched {
     background-color: #4caf50;
     cursor: default;
@@ -96,3 +106,4 @@ h1 {
     transform: scale(1.5); /* 1.5倍に拡大 */
     transition: transform 0.3s ease; /* 拡大を滑らかにする */
 }
+
