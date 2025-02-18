@@ -35,6 +35,13 @@ function flipCard(event) {
 // すでに開いたカードをクリックしないようにする
 　　if (flippedCards.length >= 2 || card.textContent !== "❓") return;
 
+ // プレイヤーごとにカードの背面色を設定
+    if (playerTurn === 1) {
+        card.classList.add("player1"); // プレイヤー1のカード
+    } else if (playerTurn === 2) {
+        card.classList.add("player2"); // プレイヤー2のカード
+    }
+
 // カードを表にする
     card.textContent = card.dataset.symbol;
     flippedCards.push(card);
@@ -55,12 +62,22 @@ function checkMatch() {
         card1.classList.add("matched");
         card2.classList.add("matched");
 
+        // プレイヤー1またはプレイヤー2に応じて、カードの背面色を変更
+        if (playerTurn === 1) {
+            card1.classList.add("player1"); // プレイヤー1の色
+            card2.classList.add("player1"); // プレイヤー1の色
+        } else if (playerTurn === 2) {
+            card1.classList.add("player2"); // プレイヤー2の色
+            card2.classList.add("player2"); // プレイヤー2の色
+        }
+
         flippedCards = [];// リセット
 
 
          // 全ペア見つかったらゲーム終了
         if (matchedPairs === symbols.length / 2) {
             message.textContent = `🎉 ゲーム終了！ プレイヤー1: ${playerScores[1]}点, プレイヤー2: ${playerScores[2]}点`;
+            return; // ゲーム終了後にターン交代しない
         }
     } else {
      // 不一致ならカードを裏に戻し、ターン交代
